@@ -28,11 +28,11 @@ class LinkedList:
         return True
     
     def pop(self):
-        pre = self.head
-        temp = self.head
-        if self.head == None:
+        if self.length == 0:
             return None
-        while temp is not None:
+        temp = self.head
+        pre = self.head
+        while (temp.next):
             pre = temp
             temp = temp.next
         self.tail = pre
@@ -58,6 +58,7 @@ print('Length:', my_linked_list.length)
 
 my_linked_list.print_list()
 
-my_linked_list.pop()
+print(my_linked_list.pop())
+print(my_linked_list.pop())
+print(my_linked_list.pop())
 
-my_linked_list.print_list()
