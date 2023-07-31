@@ -54,6 +54,7 @@ class LinkedList:
             new_node.next = self.head
             self.head = new_node
         self.length += 1
+        return True
     
     def pop_first(self):
         temp = self.head
@@ -73,6 +74,29 @@ class LinkedList:
         for i in range(index):
             temp = temp.next
         return temp
+    
+    def set(self, index, value):
+        temp = self.get(index)
+        if temp != None:
+            temp.value = value
+            return True
+        return False
+    
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        temp = self.get(index - 1)
+        new_node = Node(value)
+        new_node.next = temp.next
+        temp.next = new_node
+        length += 1
+        return True
+    
+    
         
         
         
