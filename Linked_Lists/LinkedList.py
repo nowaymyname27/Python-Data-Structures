@@ -9,6 +9,8 @@ class LinkedList:
         self.head = new_node
         self.tail = new_node
         self.length = 1
+        # if value == None:
+        #     self.length = 0
     
     def print_list(self):
         temp = self.head
@@ -42,23 +44,46 @@ class LinkedList:
             self.head = None
             self.tail = None
         return temp
+    
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+    
+    def pop_first(self):
+        temp = self.head
+        if self.length == 0:
+            return None
+        self.head = self.head.next
+        temp.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.tail = None
+        return temp
+    
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for i in range(index):
+            temp = temp.next
+        return temp
         
         
-my_linked_list = LinkedList(4)
-
-print('Head:', my_linked_list.head.value)
-print('Tail:', my_linked_list.tail.value)
-print('Length:', my_linked_list.length)
-
-my_linked_list.append(5)
-
-print('Head:', my_linked_list.head.value)
-print('Tail:', my_linked_list.tail.value)
-print('Length:', my_linked_list.length)
+        
+my_linked_list = LinkedList(1)
+my_linked_list.append(2)
+my_linked_list.append(3)
 
 my_linked_list.print_list()
 
-print(my_linked_list.pop())
-print(my_linked_list.pop())
-print(my_linked_list.pop())
+print(my_linked_list.get(0).value)
+
+
+
 
