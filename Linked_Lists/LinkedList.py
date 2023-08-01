@@ -138,30 +138,34 @@ class LinkedList:
             hare = hare.next.next
             if turtle == hare:
                 return True
-        return False 
+        return False
+    
+
+def find_kth_from_end(list, k):
+    fast = list.head
+    slow = list.head
+    for _ in range(k):
+        if fast is None:
+            return None
+        fast = fast.next
+    while fast:
+        slow = slow.next
+        fast = fast.next
+    return slow 
         
         
-        
-# my_linked_list = LinkedList(1)
-# my_linked_list.append(2)
-# my_linked_list.append(3)
-# my_linked_list.prepend(0)
+my_linked_list = LinkedList(1)
+my_linked_list.append(2)
+my_linked_list.append(3)
+my_linked_list.append(4)
+my_linked_list.append(5)
 
-# my_linked_list.print_list()
 
-# print(my_linked_list.find_middle_node().value)
-my_linked_list_1 = LinkedList(1)
-my_linked_list_1.append(2)
-my_linked_list_1.append(3)
-my_linked_list_1.append(4)
-my_linked_list_1.tail.next = my_linked_list_1.head
-print(my_linked_list_1.has_loop() ) # Returns True
+k = 1
+result = find_kth_from_end(my_linked_list, k)
 
-my_linked_list_2 = LinkedList(1)
-my_linked_list_2.append(2)
-my_linked_list_2.append(3)
-my_linked_list_2.append(4)
-print(my_linked_list_2.has_loop() ) # Returns False
+print(result.value)  # Output: 4
+
 
 
 
