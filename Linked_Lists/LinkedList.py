@@ -122,6 +122,14 @@ class LinkedList:
             before = temp
             temp = after
     
+    def find_middle_node(self):
+        turtle = self.head
+        hare = self.head
+        while hare != None and hare.next != None:
+            turtle = turtle.next
+            hare = hare.next.next
+        return turtle
+    
     
         
         
@@ -129,12 +137,13 @@ class LinkedList:
 my_linked_list = LinkedList(1)
 my_linked_list.append(2)
 my_linked_list.append(3)
+my_linked_list.prepend(0)
 
 my_linked_list.print_list()
 
-my_linked_list.reverse()
+print(my_linked_list.find_middle_node().value)
 
-my_linked_list.print_list()
+
 
 
 
