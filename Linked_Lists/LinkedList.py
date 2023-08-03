@@ -8,9 +8,7 @@ class LinkedList:
         new_node = Node(value)
         self.head = new_node
         self.tail = new_node
-        self.length = 1
-        # if value == None:
-        #     self.length = 0
+        self.length = 1 
     
     def print_list(self):
         temp = self.head
@@ -140,6 +138,11 @@ class LinkedList:
                 return True
         return False
     
+    def make_empty(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
+    
     def reverse_between(self, m, n):
         if self.head == None:
             return
@@ -157,6 +160,32 @@ class LinkedList:
             temp.next = prev.next
             prev.next = temp
         self.head = dummy.next
+    
+    def partition_list(self, x):
+        if self.head == None or self.head.next == None:
+            return
+        ll1 = LinkedList(0)
+        ll2 = LinkedList(0)
+        ll1.make_empty()
+        ll2.make_empty()
+        for _ in range(self.length):
+            if self.head == None:
+                break
+            if self.head.value < x:
+                ll1.append(self.head.value)
+            if self.head.value >= x:
+                ll2.append(self.head.value)
+            if self.head != None:
+                self.head = self.head.next
+        self.make_empty()
+        for _ in range(ll1.length):
+            self.append(ll1.head.value)
+            ll1.head = ll1.head.next
+        for _ in range(ll2.length):
+            self.append(ll2.head.value)
+            ll2.head = ll2.head.next
+                
+            
         
             
         
@@ -175,14 +204,16 @@ def find_kth_from_end(list, k):
     return slow 
         
         
-my_linked_list = LinkedList(0)
+my_linked_list = LinkedList(2)
 my_linked_list.append(1)
-my_linked_list.append(2)
+my_linked_list.append(8)
 my_linked_list.append(3)
 my_linked_list.append(4)
-my_linked_list.append(5)
+my_linked_list.append(7)
 
-my_linked_list.reverse_between(2,4)
+# my_linked_list.print_list()
+
+my_linked_list.partition_list(4)
 
 my_linked_list.print_list()
 
