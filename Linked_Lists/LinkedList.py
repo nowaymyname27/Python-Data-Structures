@@ -140,6 +140,27 @@ class LinkedList:
                 return True
         return False
     
+    def reverse_between(self, m, n):
+        if self.head == None:
+            return
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+        for _ in range(m):
+            prev = prev.next
+        current = prev.next
+        dist = n - m
+        temp = current.next
+        for _ in range(dist):
+            temp = current.next
+            current.next = temp.next
+            temp.next = prev.next
+            prev.next = temp
+        self.head = dummy.next
+        
+            
+        
+    
 
 def find_kth_from_end(list, k):
     fast = list.head
@@ -154,17 +175,19 @@ def find_kth_from_end(list, k):
     return slow 
         
         
-my_linked_list = LinkedList(1)
+my_linked_list = LinkedList(0)
+my_linked_list.append(1)
 my_linked_list.append(2)
 my_linked_list.append(3)
 my_linked_list.append(4)
 my_linked_list.append(5)
 
+my_linked_list.reverse_between(2,4)
 
-k = 1
-result = find_kth_from_end(my_linked_list, k)
+my_linked_list.print_list()
 
-print(result.value)  # Output: 4
+
+
 
 
 
