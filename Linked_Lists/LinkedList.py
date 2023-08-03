@@ -184,6 +184,19 @@ class LinkedList:
         for _ in range(ll2.length):
             self.append(ll2.head.value)
             ll2.head = ll2.head.next
+    
+    def remove_duplicates(self):
+        values = set()
+        previous = Node(None)
+        current = self.head
+        while current:
+            if current.value in values:
+                previous.next = current.next
+                self.length -= 1
+            else:
+                values.add(current.value)
+                previous = current
+            current = current.next
                 
             
         
@@ -205,15 +218,15 @@ def find_kth_from_end(list, k):
         
         
 my_linked_list = LinkedList(2)
-my_linked_list.append(1)
-my_linked_list.append(8)
+my_linked_list.append(2)
 my_linked_list.append(3)
-my_linked_list.append(4)
-my_linked_list.append(7)
+my_linked_list.append(3)
+my_linked_list.append(1)
+my_linked_list.append(1)
 
 # my_linked_list.print_list()
 
-my_linked_list.partition_list(4)
+my_linked_list.remove_duplicates()
 
 my_linked_list.print_list()
 
