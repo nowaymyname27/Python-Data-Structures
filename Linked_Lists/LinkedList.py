@@ -197,6 +197,18 @@ class LinkedList:
                 values.add(current.value)
                 previous = current
             current = current.next
+            
+    def binary_to_decimal(self):
+        sum = 0
+        length = self.length - 1
+        temp = self.head
+        for _ in range(self.length):
+            if temp.value == 1:
+                sum += 2**(length)
+            length -= 1
+            temp = temp.next
+        print(sum)    
+            
                 
             
         
@@ -217,18 +229,16 @@ def find_kth_from_end(list, k):
     return slow 
         
         
-my_linked_list = LinkedList(2)
-my_linked_list.append(2)
-my_linked_list.append(3)
-my_linked_list.append(3)
+my_linked_list = LinkedList(1)
+my_linked_list.append(0)
 my_linked_list.append(1)
-my_linked_list.append(1)
+
 
 # my_linked_list.print_list()
 
-my_linked_list.remove_duplicates()
+my_linked_list.binary_to_decimal()
 
-my_linked_list.print_list()
+
 
 
 
