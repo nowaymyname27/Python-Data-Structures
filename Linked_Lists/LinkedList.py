@@ -91,7 +91,7 @@ class LinkedList:
         new_node = Node(value)
         new_node.next = temp.next
         temp.next = new_node
-        length += 1
+        self.ength += 1
         return True
     
     def remove(self, index):
@@ -105,7 +105,7 @@ class LinkedList:
         temp = pre.next
         pre.next = temp.next
         temp.next = None
-        length -= 1
+        self.length -= 1
         return temp
     
     def reverse(self):
