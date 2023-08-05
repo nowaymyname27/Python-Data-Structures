@@ -83,6 +83,14 @@ class DoublyLinkedList:
             for _ in range(index_from_tail):
                 temp = temp.prev
         return temp
+    
+    def set(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+            
                 
                      
 my_doubly_linked_list = DoublyLinkedList(0)
