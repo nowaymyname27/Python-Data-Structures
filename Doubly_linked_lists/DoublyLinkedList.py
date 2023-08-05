@@ -96,7 +96,7 @@ class DoublyLinkedList:
             return False
         if index == 0:
             self.prepend(value)
-        if index == self.length - 1:
+        if index == self.length:
             self.append(value)
         before = self.get(index - 1)
         after = before.next
@@ -109,6 +109,27 @@ class DoublyLinkedList:
         
         self.length += 1
         return True
+    
+    def remove(self, index):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            self.pop_first()
+        if index == self.length - 1:
+            self.pop()
+        before = self.get(index - 1)
+        temp = before.next
+        after = temp.next
+        
+        before.next = after
+        after.prev = before
+        
+        temp.prev = None
+        temp.next = None
+        
+        self.length -= 1
+        return temp
+            
             
                 
                      
