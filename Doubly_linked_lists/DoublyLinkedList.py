@@ -150,18 +150,60 @@ class DoublyLinkedList:
             current = temp
         temp = self.head
         self.head = self.tail
-        self.tail = temp  
+        self.tail = temp 
+        
+    def is_palindrome(self):
+        # If the length of the list is 0 or 1, it is always a palindrome
+        if self.length <= 1:
+            return True
+        
+        # Create two pointers, one starting from the head and the other from the tail
+        forward_node = self.head
+        backward_node = self.tail
+        
+        # Iterate over half of the list
+        for i in range(self.length // 2):
+            # If the values at the two ends of the list do not match, the list is not a palindrome
+            if forward_node.value != backward_node.value:
+                return False
+            
+            # Move the two pointers towards each other
+            forward_node = forward_node.next
+            backward_node = backward_node.prev
+        
+        # If all values matched, the list is a palindrome
+        return True
             
             
                 
                      
-my_doubly_linked_list = DoublyLinkedList(0)
-my_doubly_linked_list.append(1)
-my_doubly_linked_list.append(2)
+my_doubly_linked_list = DoublyLinkedList(2)
+my_doubly_linked_list.append(0)
 my_doubly_linked_list.append(3)
+my_doubly_linked_list.append(0)
+my_doubly_linked_list.append(2)
 
 my_doubly_linked_list.print_list()
 
 my_doubly_linked_list.reverse()
 
 my_doubly_linked_list.print_list()
+
+print(my_doubly_linked_list.is_palindrome())
+
+my_dll_1 = DoublyLinkedList(1)
+my_dll_1.append(2)
+my_dll_1.append(3)
+my_dll_1.append(2)
+my_dll_1.append(1)
+
+print('my_dll_1 is_palindrome:')
+print( my_dll_1.is_palindrome() )
+
+
+my_dll_2 = DoublyLinkedList(1)
+my_dll_2.append(2)
+my_dll_2.append(3)
+
+print('\nmy_dll_2 is_palindrome:')
+print( my_dll_2.is_palindrome() )
