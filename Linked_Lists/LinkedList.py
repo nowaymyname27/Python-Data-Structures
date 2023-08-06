@@ -208,8 +208,18 @@ class LinkedList:
             length -= 1
             temp = temp.next
         print(sum)    
-            
-                
+    
+    def swap_first_last(self):
+        if self.length < 2:
+            return
+        temp = self.head.value
+        self.head.value = self.tail.value
+        self.tail.value = temp
+       
+    def reverse(self):
+        if self.length < 2:
+            return       
+          
             
         
             
