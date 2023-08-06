@@ -209,17 +209,9 @@ class LinkedList:
             temp = temp.next
         print(sum)    
     
-    def swap_first_last(self):
-        if self.length < 2:
-            return
-        temp = self.head.value
-        self.head.value = self.tail.value
-        self.tail.value = temp
+    
        
-    def reverse(self):
-        if self.length < 2:
-            return       
-          
+    
             
         
             
@@ -239,14 +231,16 @@ def find_kth_from_end(list, k):
     return slow 
         
         
-my_linked_list = LinkedList(1)
-my_linked_list.append(0)
+my_linked_list = LinkedList(0)
 my_linked_list.append(1)
+my_linked_list.append(3)
 
 
-# my_linked_list.print_list()
+my_linked_list.print_list()
 
-my_linked_list.binary_to_decimal()
+my_linked_list.reverse()
+
+my_linked_list.print_list()
 
 
 

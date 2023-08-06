@@ -129,6 +129,28 @@ class DoublyLinkedList:
         
         self.length -= 1
         return temp
+    
+    def swap_first_last(self):
+        if self.length < 2:
+            return
+        temp = self.head.value
+        self.head.value = self.tail.value
+        self.tail.value = temp
+    
+    
+    def reverse(self):
+        if self.length < 2:
+            return       
+        current = self.head
+        temp = current.next
+        for _ in range(self.length):
+            temp = current.next
+            current.next = current.prev
+            current.prev = temp
+            current = temp
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp  
             
             
                 
@@ -140,4 +162,6 @@ my_doubly_linked_list.append(3)
 
 my_doubly_linked_list.print_list()
 
-print(my_doubly_linked_list.get(3).value)
+my_doubly_linked_list.reverse()
+
+my_doubly_linked_list.print_list()
