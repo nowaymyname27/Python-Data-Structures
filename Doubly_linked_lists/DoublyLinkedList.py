@@ -173,37 +173,46 @@ class DoublyLinkedList:
         
         # If all values matched, the list is a palindrome
         return True
+    
+    def swap_pairs(self):
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+        
+        while self.head and self.head.next:
+            first_node = self.head
+            second_node = self.head.next
+            
+            prev.next = second_node
+            first_node.next = second_node.next
+            second_node.next = first_node
+            
+            second_node.prev = prev
+            first_node.prev = second_node
+            if first_node.next:
+                first_node.next.prev = first_node
+                
+            self.head = first_node.next
+            prev = first_node
+        self.head = dummy.next
+        if self.head:
+            self.head.prev = None
+            
+            
+            
             
             
                 
                      
-my_doubly_linked_list = DoublyLinkedList(2)
-my_doubly_linked_list.append(0)
-my_doubly_linked_list.append(3)
-my_doubly_linked_list.append(0)
+my_doubly_linked_list = DoublyLinkedList(0)
+my_doubly_linked_list.append(1)
 my_doubly_linked_list.append(2)
+my_doubly_linked_list.append(3)
+
 
 my_doubly_linked_list.print_list()
 
-my_doubly_linked_list.reverse()
+my_doubly_linked_list.swap_pairs()
 
 my_doubly_linked_list.print_list()
 
-print(my_doubly_linked_list.is_palindrome())
-
-my_dll_1 = DoublyLinkedList(1)
-my_dll_1.append(2)
-my_dll_1.append(3)
-my_dll_1.append(2)
-my_dll_1.append(1)
-
-print('my_dll_1 is_palindrome:')
-print( my_dll_1.is_palindrome() )
-
-
-my_dll_2 = DoublyLinkedList(1)
-my_dll_2.append(2)
-my_dll_2.append(3)
-
-print('\nmy_dll_2 is_palindrome:')
-print( my_dll_2.is_palindrome() )
