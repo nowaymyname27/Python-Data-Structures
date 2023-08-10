@@ -26,3 +26,19 @@ class Stack:
             return None
         else:
             return self.stack_list.pop()
+        
+
+def is_balanced_parentheses(string):
+    parentheses_stack = Stack()
+    for i in range(len(string)):
+        if string[i] == "(":
+            parentheses_stack.push("(")
+        if string[i] == ")":
+            par = parentheses_stack.pop()
+            if par == None:
+                return False
+    if parentheses_stack.peek() is not None:
+        return False
+    return True
+    
+is_balanced_parentheses("(((as)))(")
