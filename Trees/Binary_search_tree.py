@@ -28,14 +28,28 @@ class Binary_Search_Tree:
                     temp.right = new_node
                     return True
                 temp = temp.right
+    
+    def contains(self, value):
+        temp = self.root
+        while temp is not None:
+            if value < temp.value:
+                temp = temp.left
+            elif value > temp.value:
+                temp = temp.right
+            else:
+                return True
+        return False
             
 my_BST = Binary_Search_Tree()
 
-my_BST.insert(2)
-my_BST.insert(1)
-my_BST.insert(3)
+my_BST.insert(47)
+my_BST.insert(21)
+my_BST.insert(76)
+my_BST.insert(18)
+my_BST.insert(27)
+my_BST.insert(52)
+my_BST.insert(82)
 
-print(my_BST.root.value)
-print(my_BST.root.left.value)
-print(my_BST.root.right.value)
+print(my_BST.contains(27))
+print(my_BST.contains(17))
         
