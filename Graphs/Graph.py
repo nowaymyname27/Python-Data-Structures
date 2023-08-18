@@ -12,8 +12,18 @@ class Graph:
             return True
         return False
     
+    def add_edge(self, vertex1, vertex2):
+        if self.adj_list.get(vertex1) is not None and self.adj_list.get(vertex2) is not None:
+            self.adj_list.get(vertex1).append(vertex2)
+            self.adj_list.get(vertex2).append(vertex1)
+            return True
+        return False
+    
 my_graph = Graph()
 
 my_graph.add_vertex('A')
+my_graph.add_vertex('B')
+
+my_graph.add_edge('A', 'B')
 
 my_graph.print_graph()
