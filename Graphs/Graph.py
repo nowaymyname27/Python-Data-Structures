@@ -12,10 +12,17 @@ class Graph:
             return True
         return False
     
-    def add_edge(self, vertex1, vertex2):
-        if self.adj_list.get(vertex1) is not None and self.adj_list.get(vertex2) is not None:
-            self.adj_list.get(vertex1).append(vertex2)
-            self.adj_list.get(vertex2).append(vertex1)
+    def add_edge(self, v1, v2):
+        if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():
+            self.adj_list.get(v1).append(v2)
+            self.adj_list.get(v2).append(v1)
+            return True
+        return False
+    
+    def remove_edge(self, v1, v2):
+        if v1 in self.adj_list.keys() and v2 in self.adj_list.keys():
+            self.adj_list.get(v1).remove(v2)
+            self.adj_list.get(v2).remove(v1)
             return True
         return False
     
@@ -25,5 +32,9 @@ my_graph.add_vertex('A')
 my_graph.add_vertex('B')
 
 my_graph.add_edge('A', 'B')
+
+my_graph.print_graph()
+
+my_graph.remove_edge('A', 'B')
 
 my_graph.print_graph()
