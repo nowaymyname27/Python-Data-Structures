@@ -31,7 +31,7 @@ class Binary_Search_Tree:
     
     def contains(self, value):
         temp = self.root
-        while temp is not None:
+        while (temp is not None):
             if value < temp.value:
                 temp = temp.left
             elif value > temp.value:
@@ -40,7 +40,20 @@ class Binary_Search_Tree:
                 return True
         return False
     
-    def _r_contains(self, current_node, value):
+    def __r_contains(self, current_node, value):
+        if current_node == None:
+            return False
+        if value == current_node.value:
+            return True
+        if value < current_node.value:
+            return self.__r_contains(current_node.left, value)
+        if value > current_node.value:
+            return self.__r_contains(current_node.right, value)
+        
+        
+        
+    def r_contains(self, value):
+        return self.__r_contains(self.root, value)
         
             
 my_BST = Binary_Search_Tree()
@@ -53,6 +66,6 @@ my_BST.insert(27)
 my_BST.insert(52)
 my_BST.insert(82)
 
-print(my_BST.contains(27))
-print(my_BST.contains(17))
+print(my_BST.r_contains(27))
+print(my_BST.r_contains(17))
         
