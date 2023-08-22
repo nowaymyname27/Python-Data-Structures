@@ -50,10 +50,22 @@ class Binary_Search_Tree:
         if value > current_node.value:
             return self.__r_contains(current_node.right, value)
         
-        
-        
     def r_contains(self, value):
         return self.__r_contains(self.root, value)
+    
+    def __r_insert(self, current_node, value):
+        if current_node == None:
+            return Node(value)
+        if value < current_node.value:
+            current_node.left = self.__r_insert(current_node.left , value)
+        if value > current_node.value:
+            current_node.right = self.__r_insert(current_node.right, value)
+        return current_node
+    
+    def r_insert(self, value):
+        if self.root == None:
+            self.root = Node(value)
+        self.__r_insert(self.root, value)
         
             
 my_BST = Binary_Search_Tree()
@@ -62,7 +74,7 @@ my_BST.insert(47)
 my_BST.insert(21)
 my_BST.insert(76)
 my_BST.insert(18)
-my_BST.insert(27)
+my_BST.r_insert(27)
 my_BST.insert(52)
 my_BST.insert(82)
 
