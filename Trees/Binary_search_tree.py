@@ -55,7 +55,45 @@ class Binary_Search_Tree:
                 queue.append(current_node.right)
         
         return results
-            
+    
+    def DFS_pre_order(self):
+        results = []
+        
+        def traverse(current_node):
+            results.append(current_node.value)
+            if current_node.left is not None:
+                traverse(current_node.left)
+            if current_node.right is not None:
+                traverse(current_node.right)
+        traverse(self.root)
+        return results
+    
+    def DFS_post_order(self):
+        results = []
+        
+        def traverse(current_node):
+            if current_node.left is not None:
+                traverse(current_node.left)
+            if current_node.right is not None:
+                traverse(current_node.right)
+            results.append(current_node.value)
+        traverse(self.root)
+        return results
+    
+    def DFS_in_order(self):
+        results = []
+        
+        def traverse(current_node):
+            if current_node.left is not None:
+                traverse(current_node.left)
+            results.append(current_node.value)
+            if current_node.right is not None:
+                traverse(current_node.right)
+        traverse(self.root)
+        return results
+        
+        
+        
 my_BST = Binary_Search_Tree()
 
 my_BST.insert(47)
@@ -67,4 +105,6 @@ my_BST.insert(52)
 my_BST.insert(82)
 
 print(my_BST.BFS())
-        
+print(my_BST.DFS_pre_order())
+print(my_BST.DFS_post_order())
+print(my_BST.DFS_in_order())
