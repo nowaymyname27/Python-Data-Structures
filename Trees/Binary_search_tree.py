@@ -39,6 +39,22 @@ class Binary_Search_Tree:
             else:
                 return True
         return False
+    
+    def BFS(self):
+        current_node = self.root
+        queue = []
+        results = []
+        queue.append(current_node)
+        
+        while (len(queue) > 0):
+            current_node = queue.pop(0)
+            results.append(current_node.value)
+            if current_node.left is not None:
+                queue.append(current_node.left)
+            if current_node.right is not None:
+                queue.append(current_node.right)
+        
+        return results
             
 my_BST = Binary_Search_Tree()
 
@@ -50,6 +66,5 @@ my_BST.insert(27)
 my_BST.insert(52)
 my_BST.insert(82)
 
-print(my_BST.contains(27))
-print(my_BST.contains(17))
+print(my_BST.BFS())
         
