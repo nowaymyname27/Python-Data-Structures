@@ -1,33 +1,59 @@
 class Node:
+    """
+    Represents a node in a doubly linked list.
+    """
     def __init__(self, value):
-        self.value = value
-        self.next = None
-        self.prev = None
+        """
+        Initializes the Node with a given value.
+
+        :param value: Value to be stored in the node.
+        """
+        self.value = value  # The value/data the node holds
+        self.next = None    # Reference to the next node in the list
+        self.prev = None    # Reference to the previous node in the list
 
 class DoublyLinkedList:
+    """
+    Represents a doubly linked list.
+    """
     def __init__(self, value):
-        new_node = Node(value)
-        self.head = new_node
-        self.tail = new_node
-        self.length = 1
+        """
+        Initializes the DoublyLinkedList with a single node of the given value.
+
+        :param value: Value to be stored in the first node.
+        """
+        new_node = Node(value)   # Create a new node with the provided value
+        self.head = new_node     # Set the new node as the head of the list
+        self.tail = new_node     # Also set it as the tail (since it's the only node in the list)
+        self.length = 1          # Set initial length of the list to 1
     
     def print_list(self):
-        temp = self.head
-        while temp is not None:
-            print(temp.value)
-            temp = temp.next
+        """
+        Prints the values in the doubly linked list.
+        """
+        temp = self.head          # Start at the head of the list
+        while temp is not None:   # Continue until reaching the end of the list
+            print(temp.value)     # Print the current node's value
+            temp = temp.next      # Move to the next node in the list
     
     def append(self, value):
-        new_node = Node(value)
-        if self.head is None:
-            self.head = new_node
-            self.tail = new_node
+        """
+        Appends a new node with the given value to the end of the list.
+
+        :param value: Value to be stored in the new node.
+        :return: True if the node is successfully appended.
+        """
+        new_node = Node(value)  # Create a new node with the given value
+        if self.head is None:   # If the list is empty...
+            self.head = new_node  # Set the new node as the head
+            self.tail = new_node  # And also as the tail
         else:
-            self.tail.next = new_node
-            new_node.prev = self.tail
-            self.tail = new_node
-        self.length += 1
-        return True
+            self.tail.next = new_node  # Attach new node to the end of the list
+            new_node.prev = self.tail  # Set the previous reference of new node to the current tail
+            self.tail = new_node       # Update the tail to the new node
+        self.length += 1               # Increment the list length
+        return True                    # Indicate successful append
+
     
     def pop(self):
         if self.length == 0:
